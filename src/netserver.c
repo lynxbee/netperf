@@ -184,7 +184,7 @@ char	netserver_id[]="\
 #if !defined(PATH_MAX)
 #define PATH_MAX MAX_PATH
 #endif
-char     FileName[PATH_MAX];
+const char     FileName[PATH_MAX] = NETPERF_NULL;
 
 char     listen_port[10];
 
@@ -256,8 +256,8 @@ open_debug_file()
 
   if (where != NULL) fflush(where);
   if (suppress_debug) {
-    FileName = NETPERF_NULL;
-    where = fopen(Filename, "w");
+    //FileName = NETPERF_NULL;
+    where = fopen(FileName, "w");
   } else {
     snprintf(FileName, sizeof(FileName), "%s" FILE_SEP "%s",
              DEBUG_LOG_FILE_DIR, DEBUG_LOG_FILE);
